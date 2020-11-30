@@ -1,5 +1,6 @@
 import java.net.MalformedURLException;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
@@ -29,7 +30,8 @@ public class Authentication {
             return null;
         }
 
-        Set<String> scopeSet = Set.of(scopes);
+        HashSet<String> scopeSet = new HashSet<>(scopes.length);
+        scopeSet.addAll(Arrays.asList(scopes));
 
         ExecutorService pool = Executors.newFixedThreadPool(1);
         PublicClientApplication app;

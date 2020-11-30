@@ -1,7 +1,7 @@
 package bot
 
+import Authentication
 import com.gitlab.kordlib.core.Kord
-import kotlinx.coroutines.runBlocking
 import java.util.*
 
 class JapaneseBotBuilder(private val token: String) {
@@ -11,7 +11,7 @@ class JapaneseBotBuilder(private val token: String) {
 
     private fun authenticate(): String {
         val oAuthProperties = Properties().also {
-            it.load(this::class.java.getResourceAsStream("../oAuth.properties"))
+            it.load(this::class.java.classLoader.getResourceAsStream("oAuth.properties"))
         }
 
         val appId = oAuthProperties.getProperty("app.id")

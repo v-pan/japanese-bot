@@ -16,9 +16,14 @@ class JapaneseBot(val kord: Kord) {
         val result = mutableMapOf<DriveItem, String?>()
 
         // Check with the manifest file
+        File("./translatedFiles").let {
+            if (!it.isDirectory && !it.exists()) {
+                it.mkdir()
+            }
+        }
         val manifestFile = File("./translatedFiles/.manifest")
         val lastModifiedMap = try {
-             manifestFile.readLines().mapIndexed { index, line ->
+             manifestFile.readLines().map { line ->
                  val split = line.split(" | ")
                  if(split.size == 2) {
                      val (fileName, dateModified) = split
