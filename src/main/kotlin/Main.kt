@@ -90,6 +90,8 @@ fun main(args: Array<String>) {
                     }
                 }
                 message.content.toLowerCase().contains("er") -> {
+                    if (message.content == "<@!777216205735198741> talk here") return@on
+
                     val chunks = message.content.split("er").dropLast(1)
                     chunks.forEach {
                         val targetWord = it.split(" ").last() // Get the last "er" word in this sequence

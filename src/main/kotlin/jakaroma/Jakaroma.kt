@@ -56,7 +56,7 @@ class Jakaroma {
                 i++
                 continue
             }
-            val space = true
+//            val space = true
             when (tokens[i].allFeaturesArray[1]) {
                 "数", "アルファベット", "サ変接続" -> {
 //                    buffer.append(tokens[i].surface) // TODO - exception list for when this false positives
@@ -77,7 +77,7 @@ class Jakaroma {
                         var katakana = getKatakana(tokens[i])
                         if (DEBUG) println("Katakana: $katakana")
                         val currentRomaji = kanaToRomaji.convert(katakana)
-                        val nextTokenRomaji = ""
+//                        val nextTokenRomaji = ""
 
                         // sokuon at end of token list: exclamation mark
                         if (katakana.endsWith("ッ") && i == tokens.size - 1) {
@@ -141,7 +141,7 @@ class Jakaroma {
 
         fun smallTsuRomaji(token: Token, nextToken: Token): String {
             val kanaToRomaji = KanaToRomaji()
-            var romaji = ""
+            val romaji: String
             val nextRomaji = kanaToRomaji.convert(getKatakana(nextToken))
             val currentRomaji = kanaToRomaji.convert(getKatakana(token).substring(0, token.surface.length - 1))
             romaji = currentRomaji + nextRomaji.substring(0, 1) + nextRomaji
