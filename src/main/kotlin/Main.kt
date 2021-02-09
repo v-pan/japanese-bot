@@ -90,7 +90,12 @@ fun main(args: Array<String>) {
                     }
                 }
                 message.content.toLowerCase().contains("er") -> {
-                    
+                    val chunks = message.content.split("er").dropLast(1)
+                    chunks.forEach {
+                        val targetWord = it.split(" ").last() // Get the last "er" word in this sequence
+
+                        message.channel.createMessage("${targetWord}er? I barely know her!")
+                    }
                 }
             }
         }
