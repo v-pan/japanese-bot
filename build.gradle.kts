@@ -35,6 +35,9 @@ dependencies {
 
     // Clikt - Command line parsing
     implementation("com.github.ajalt.clikt:clikt:3.0.1")
+
+    // Tensorflow
+//    implementation(group = "org.tensorflow", name = "tensorflow-core-platform", version = "0.2.0")
 }
 
 tasks.withType<KotlinCompile>() {
